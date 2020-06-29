@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { register } from '../actions/userActions';
+import { vendorregister } from '../actions/userActions';
 
-function RegisterScreen(props) {
+function VendorRegisterScreen(props) {
 
   const [fname, setfName] = useState('');
   const [lname, setlName] = useState('');
@@ -28,13 +28,13 @@ function RegisterScreen(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(register(fname, lname, email, mobile, city, password, repassword));
+    dispatch(vendorregister(fname, lname, email, mobile, city, password, repassword));
   }
   return <div className="form">
     <form onSubmit={submitHandler} >
       <ul className="form-container">
         <li>
-          <h2>Create Distributor Account</h2>
+          <h2>Create Vendor Account</h2>
         </li>
         <li>
           {loading && <div>Loading...</div>}
@@ -95,14 +95,14 @@ function RegisterScreen(props) {
           <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="button secondary text-center" >Sign In</Link>
         </li>
         <li>
-         Vendor Account Register?
+        Distributor Account Register?
         </li>
         <li>
-          <Link to="/vendorRegister" className="button">Click Here</Link>
+          <Link to="/register" className="button">Click Here</Link>
         </li>
 
       </ul>
     </form>
   </div>
 }
-export default RegisterScreen;
+export default VendorRegisterScreen;

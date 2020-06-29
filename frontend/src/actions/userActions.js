@@ -33,11 +33,31 @@ const signin = (email, password) => async (dispatch) => {
     dispatch({ type: USER_SIGNIN_FAIL, payload: error.message });
   }
 }
-
-const register = (name, email, password) => async (dispatch) => {
-  dispatch({ type: USER_REGISTER_REQUEST, payload: { name, email, password } });
+const vendorsignin = (email, password) => async (dispatch) => {
+  dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
   try {
-    const { data } = await Axios.post("/api/users/register", { name, email, password });
+    const { data } = await Axios.post("/api/users/vendorSignin", { email, password });
+    dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
+    Cookie.set('userInfo', JSON.stringify(data));
+  } catch (error) {
+    dispatch({ type: USER_SIGNIN_FAIL, payload: error.message });
+  }
+}
+
+const register = (fname, lname, email, mobile, city,  password) => async (dispatch) => {
+  dispatch({ type: USER_REGISTER_REQUEST, payload: { fname, lname, email, mobile, city, password } });
+  try {
+    const { data } = await Axios.post("/api/users/register", { fname, lname, email, mobile, city,  password });
+    dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
+    Cookie.set('userInfo', JSON.stringify(data));
+  } catch (error) {
+    dispatch({ type: USER_REGISTER_FAIL, payload: error.message });
+  }
+}
+const vendorregister = (fname, lname, email, mobile, city,  password) => async (dispatch) => {
+  dispatch({ type: USER_REGISTER_REQUEST, payload: { fname, lname, email, mobile, city, password } });
+  try {
+    const { data } = await Axios.post("/api/users/vendorRegister", { fname, lname, email, mobile, city, password });
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     Cookie.set('userInfo', JSON.stringify(data));
   } catch (error) {
@@ -49,4 +69,4 @@ const logout = () => (dispatch) => {
   Cookie.remove("userInfo");
   dispatch({ type: USER_LOGOUT })
 }
-export { signin, register, logout, update };
+export { signin, vendorsignin, register, vendorregister, logout, update };

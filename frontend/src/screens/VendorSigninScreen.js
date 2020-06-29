@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { detailsUser, signin } from '../actions/userActions';
+import { detailsUser, signin, vendorsignin } from '../actions/userActions';
 
-function SigninScreen(props) {
+function VendorSigninScreen(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,14 +21,14 @@ function SigninScreen(props) {
 
   const submitHandler = (e) =>{
     e.preventDefault();
-    dispatch(signin(email, password));
+    dispatch(vendorsignin(email, password));
   }
 
   return <div className="form">
     <form onSubmit={submitHandler} >
       <ul className="form-container">
         <li>
-          <h2>Distributor Sign-In</h2>
+          <h2>Vendor Sign-In</h2>
         </li>
         <li>
           {loading && <div>Loading...</div>}
@@ -53,16 +53,17 @@ function SigninScreen(props) {
           Not Registered?
         </li>
         <li>
-          <Link to="/register" className="button">Create your Distributor account</Link>
+          <Link to="/vendorRegister" className="button">Create your Vendor account</Link>
         </li>
         <li>
-         Vendor Account SignIn?
+         Distributor Account SignIn?
         </li>
         <li>
-          <Link to="/vendorSignin" className="button">Click Here</Link>
+          <Link to="/signIn" className="button">Click Here</Link>
         </li>
+
       </ul>
     </form>
   </div>
 }
-export default SigninScreen;
+export default VendorSigninScreen;

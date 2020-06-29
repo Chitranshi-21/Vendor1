@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 html {
-  font-size: 62.5%; /* 16px * 62.5 = 10px = 1rem */
+  font-size: 12px; /* 16px * 62.5 = 10px = 1rem */
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 body {
-  font: 1.6rem Helvetica;
+  font: 1.6rem ;
+  font-family: 'Roboto', sans-serif;
   height: 100vh;
   margin: 0;
 }
@@ -26,6 +29,9 @@ button {
   grid-template-rows: 5rem 1fr 5rem;
   height: 100%;
 }
+.heading{
+  align-items: left;
+}
 .header {
   grid-area: header;
   background-color: #203040;
@@ -37,7 +43,7 @@ button {
 }
 .brand a {
   color: #ffffff;
-  font-size: 3rem;
+  font-size: 26px;
   font-weight: bold;
   text-decoration: none;
 }
@@ -130,7 +136,7 @@ ul.review {
   font-size: 1.4rem;
 }
 a > .rating > span:last-child {
-  color: #0000ff;
+  color: #008cff;
 }
 
 /* Sidebar */
@@ -287,6 +293,7 @@ a > .rating > span:last-child {
 
 .form {
   display: flex;
+  margin-top: 40px;
   justify-content: center;
   align-items: center;
   height: 100%;
